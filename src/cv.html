@@ -21,7 +21,8 @@
       background: #e8eaf6;
     }
 
-    h1, h3 {
+    h1,
+    h3 {
       margin: 0;
       font-weight: normal;
     }
@@ -43,7 +44,8 @@
       grid-template-columns: auto 1fr;
     }
 
-    #wrapper h1, #links h3 {
+    #wrapper h1,
+    #links h3 {
       padding: 20px 0;
       padding-left: 15px;
       background: #304ffe;
@@ -93,7 +95,11 @@
     }
 
     nav ul a:hover {
-      background: #5c6bc0;
+      background: #7986cb;
+    }
+
+    .active {
+      background: #7986cb;
     }
 
     #welcome {
@@ -103,13 +109,11 @@
     }
 
     #welcome #background {
-      background: linear-gradient(
-        180deg,
-        #303f9f 0%,
-        #303f9f 40%,
-        #e8eaf6 40%,
-        #e8eaf6 100%
-      );
+      background: linear-gradient( 180deg,
+      #303f9f 0%,
+      #303f9f 40%,
+      #e8eaf6 40%,
+      #e8eaf6 100%);
       background-attachment: fixed;
       display: grid;
       justify-content: center;
@@ -135,7 +139,9 @@
       background: #303f9f;
     }
 
-    #skills > ul > li, #languages ul li, #other ul li {
+    #skills>ul>li,
+    #languages ul li,
+    #other ul li {
       display: grid;
       grid-auto-flow: column;
       grid-template-columns: minmax(auto, 200px) auto 1fr;
@@ -162,13 +168,15 @@
       background: #283593;
     }
 
-    #links ul, #hobbies ul, #education ul {
+    #links ul,
+    #hobbies ul,
+    #education ul {
       margin: 15px;
       display: grid;
       grid-gap: 15px;
     }
 
-    #links ul li > * {
+    #links ul li>* {
       color: white;
     }
 
@@ -321,56 +329,56 @@
     }
   </style>
 
-<section id="wrapper">
+  <section id="wrapper">
     <nav>
       <ul>
         <li>
-        <a href="#welcome">
-          Welcome
-          <i class="material-icons md-24">bookmark</i>
-        </a>
+          <a href="#welcome">
+            Welcome
+            <i class="material-icons md-24">bookmark</i>
+          </a>
         </li>
         <li>
-        <a href="#skills">
-          Skills
-          <i class="material-icons md-24">build</i>
-        </a>
+          <a href="#skills">
+            Skills
+            <i class="material-icons md-24">build</i>
+          </a>
         </li>
         <li>
-        <a href="#portofolio">
-          Portofolio
-          <i class="material-icons md-24">work</i>
-        </a>
+          <a href="#portofolio">
+            Portofolio
+            <i class="material-icons md-24">work</i>
+          </a>
         </li>
         <li>
-        <a href="#languages">
-          Languages
-          <i class="material-icons md-24">language</i>
-        </a>
+          <a href="#languages">
+            Languages
+            <i class="material-icons md-24">language</i>
+          </a>
         </li>
         <li>
-        <a href="#education">
-          Education
-          <i class="material-icons md-24">library_books</i>
-        </a>
+          <a href="#education">
+            Education
+            <i class="material-icons md-24">library_books</i>
+          </a>
         </li>
         <li>
-        <a href="#other">
-          Other
-          <i class="material-icons md-24">stars</i>
-        </a>
+          <a href="#other">
+            Other
+            <i class="material-icons md-24">stars</i>
+          </a>
         </li>
         <li>
-        <a href="#hobbies">
-          Hobbies
-          <i class="material-icons md-24">library_music</i>
-        </a>
+          <a href="#hobbies">
+            Hobbies
+            <i class="material-icons md-24">library_music</i>
+          </a>
         </li>
         <li>
-        <a href="#contact">
-          Contact
-          <i class="material-icons md-24">email</i>
-        </a>
+          <a href="#contact">
+            Contact
+            <i class="material-icons md-24">email</i>
+          </a>
         </li>
       </ul>
     </nav>
@@ -467,26 +475,26 @@
           <ul>
             <li class="badge">
               <a href="https://stackshare.io/mytee306">
-              <p>Stackshare</p>
-              <i class="material-icons md-24">link</i>
+                <p>Stackshare</p>
+                <i class="material-icons md-24">link</i>
               </a>
             </li>
             <li class="badge">
               <a href="https://github.com/mytee306">
-              <p>Github</p>
-              <i class="material-icons md-24">link</i>
+                <p>Github</p>
+                <i class="material-icons md-24">link</i>
               </a>
             </li>
             <li class="badge">
               <a href="https://codepen.io/mytee306">
-              <p>Codepen</p>
-              <i class="material-icons md-24">link</i>
+                <p>Codepen</p>
+                <i class="material-icons md-24">link</i>
               </a>
             </li>
             <li class="badge">
               <a href="https://stackblitz.io/@mytee306">
-              <p>Stackblitz</p>
-              <i class="material-icons md-24">link</i>
+                <p>Stackblitz</p>
+                <i class="material-icons md-24">link</i>
               </a>
             </li>
           </ul>
@@ -571,49 +579,49 @@
             <p>66%</p>
           </li>
           <li>
-          <li>
-            <p>MS Office / LibreOffice</p>
-            <div class="progress-bar">
-              <div id="office" style="width: 75%;"></div>
-            </div>
-            <p>75%</p>
-          </li>
-          <li>
-            <p>Adobe Photoshop / Gimp</p>
-            <div class="progress-bar">
-              <div id="photoshop" style="width: 80%;"></div>
-            </div>
-            <p>80%</p>
-          </li>
-          <li>
-            <p>Inkscape ( Graphics )</p>
-            <div class="progress-bar">
-              <div id="office" style="width: 60%;"></div>
-            </div>
-            <p>60%</p>
-          </li>
-          <li>
-            <p>Adobe Flash ( Animations )</p>
-            <div class="progress-bar">
-              <div id="flash" style="width: 55%;"></div>
-            </div>
-            <p>55%</p>
-          </li>
-          <li>
-            <p>VideScribe ( Animations )</p>
-            <div class="progress-bar">
-              <div id="video-scribe" style="width: 90%;"></div>
-            </div>
-            <p>90%</p>
-          </li>
-          <li>
-            <p>Audacity ( Audio Editor )</p>
-            <div class="progress-bar">
-              <div id="audacity" style="width: 75%;"></div>
-            </div>
-            <p>75%</p>
-          </li>
-          <li></li>
+            <li>
+              <p>MS Office / LibreOffice</p>
+              <div class="progress-bar">
+                <div id="office" style="width: 75%;"></div>
+              </div>
+              <p>75%</p>
+            </li>
+            <li>
+              <p>Adobe Photoshop / Gimp</p>
+              <div class="progress-bar">
+                <div id="photoshop" style="width: 80%;"></div>
+              </div>
+              <p>80%</p>
+            </li>
+            <li>
+              <p>Inkscape ( Graphics )</p>
+              <div class="progress-bar">
+                <div id="office" style="width: 60%;"></div>
+              </div>
+              <p>60%</p>
+            </li>
+            <li>
+              <p>Adobe Flash ( Animations )</p>
+              <div class="progress-bar">
+                <div id="flash" style="width: 55%;"></div>
+              </div>
+              <p>55%</p>
+            </li>
+            <li>
+              <p>VideScribe ( Animations )</p>
+              <div class="progress-bar">
+                <div id="video-scribe" style="width: 90%;"></div>
+              </div>
+              <p>90%</p>
+            </li>
+            <li>
+              <p>Audacity ( Audio Editor )</p>
+              <div class="progress-bar">
+                <div id="audacity" style="width: 75%;"></div>
+              </div>
+              <p>75%</p>
+            </li>
+            <li></li>
         </ul>
       </section>
       <section id="hobbies">
@@ -672,22 +680,22 @@
         </ul>
       </section>
       <section id="contact">
-          <h1>Contact</h1>
-          <form>
-            <label for="email">Email</label>
-            <input type="email" id="email" value="mateja176@gmail.com" readonly>
-            <label for="phone">Phone</label>
-            <input type="phone" id="phone" value="+381641512268" readonly>
-            <label for="address">Address</label>
-            <input type="address" id="address" value="Belgrade, Serbia" readonly>
-          </form>
-        </section>
+        <h1>Contact</h1>
+        <form>
+          <label for="email">Email</label>
+          <input type="email" id="email" value="mateja176@gmail.com" readonly>
+          <label for="phone">Phone</label>
+          <input type="phone" id="phone" value="+381641512268" readonly>
+          <label for="address">Address</label>
+          <input type="address" id="address" value="Belgrade, Serbia" readonly>
+        </form>
+      </section>
     </main>
   </section>
 
   <script>
 
-    const writeWithEasing = (element, text = 'Hi', s = 200, decrement = 5) => {
+    const writeWithEasing = ( element, text = 'Hi', s = 200, decrement = 5 ) => {
 
       let step = s
 
@@ -698,20 +706,20 @@
       let ref
 
       const write = () => {
-        element.innerHTML += text.charAt(currentStep)
+        element.innerHTML += text.charAt( currentStep )
         currentStep++
         schedule()
       }
 
       return () => {
-        if (currentStep < steps) {
-          ref = setTimeout(write, step)
+        if ( currentStep < steps ) {
+          ref = setTimeout( write, step )
           step -= decrement
         } else {
           return 'done';
         }
         return () => {
-          clearTimeout(ref)
+          clearTimeout( ref )
           message.innerHTML = ''
           currentStep = 0
           step = 200
@@ -722,9 +730,38 @@
 
     const text = 'Hi, my name is Mateja Petrovic';
 
-    const schedule = writeWithEasing(hi, text, 200, 5)
+    const schedule = writeWithEasing( hi, text, 200, 5 )
 
     window.onload = () => schedule();
+
+    const highlight = cls => {
+      let currentItem
+      return newItem => {
+        currentItem ? currentItem.classList.remove( cls ) : ''
+        newItem.classList.add( cls )
+        currentItem = newItem
+      }
+    }
+
+    const hightlightActive = highlight('active')
+
+    const items = Array.from(document.querySelectorAll('nav ul li'))
+
+    items.map(
+      item => item.onclick = e => hightlightActive(item.firstElementChild)
+    )
+
+    const hash = window.location.hash
+
+    if (hash) {
+      const found = items.find
+      (
+        item => `#${item.firstElementChild.textContent.match(/\w+/)[0].toLowerCase()}`=== hash
+      )
+      hightlightActive(found.firstElementChild)
+    } else {
+      console.dir('no pathname')
+    }
 
   </script>
 
