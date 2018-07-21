@@ -30,6 +30,7 @@
     a {
       text-decoration: none;
       color: initial;
+      cursor: pointer;
     }
 
     ul {
@@ -315,7 +316,7 @@
       margin-bottom: 100px;
     }
 
-    form input {
+    form input, form textarea {
       line-height: 120%;
       font-size: 120%;
       padding: 10px 0 10px 10px;
@@ -327,55 +328,64 @@
     form label {
       color: dimgray;
     }
+
+    textarea {
+      resize: none;
+    }
+
+    #formWrapper {
+      display: grid;
+      grid-auto-flow: column;
+    }
   </style>
 
   <section id="wrapper">
     <nav>
       <ul>
         <li>
-          <a href="#welcome">
+          <a id="#welcome">
             Welcome
             <i class="material-icons md-24">bookmark</i>
           </a>
         </li>
         <li>
-          <a href="#skills">
+          <a id="#skills">
             Skills
             <i class="material-icons md-24">build</i>
           </a>
         </li>
         <li>
-          <a href="#portofolio">
+          <a id="#portofolio">
             Portofolio
             <i class="material-icons md-24">work</i>
           </a>
         </li>
         <li>
-          <a href="#languages">
+          <a id="#languages">
             Languages
             <i class="material-icons md-24">language</i>
           </a>
         </li>
         <li>
-          <a href="#education">
+          <a id="#education">
             Education
             <i class="material-icons md-24">library_books</i>
           </a>
         </li>
         <li>
-          <a href="#other">
+          <a id="#other">
             Other
             <i class="material-icons md-24">stars</i>
           </a>
         </li>
         <li>
-          <a href="#hobbies">
+          <a id="#hobbies">
             Hobbies
             <i class="material-icons md-24">library_music</i>
           </a>
         </li>
         <li>
-          <a href="#contact">
+          <a id="#contact">
             Contact
             <i class="material-icons md-24">email</i>
           </a>
@@ -388,9 +398,9 @@
     <main>
       <section id="welcome">
         <h1>Welcome to my CV</h1>
-        <h3 id="hi"></h3>
+        <h3 id="hi">> &nbsp;</h3>
         <div id="background">
-          <a href="#skills">
+          <a id="#skills" onclick="scrollSmoothly(this.id)">
             Go to skills &nbsp;
             <i class="material-icons md-24">arrow_downward</i>
           </a>
@@ -402,9 +412,9 @@
           <li>
             <p>Javascript / ES6</p>
             <div class="progress-bar">
-              <div id="javascript" style="width: 95%;"></div>
+              <div id="javascript" style="width: 90%;"></div>
             </div>
-            <p>95%</p>
+            <p>90%</p>
           </li>
           <li>
             <p>Typescript</p>
@@ -681,14 +691,30 @@
       </section>
       <section id="contact">
         <h1>Contact</h1>
-        <form>
-          <label for="email">Email</label>
+        <section id="formWrapper">
+
+          <form id="personalForm">
+            <label for="email">My Email</label>
           <input type="email" id="email" value="mateja176@gmail.com" readonly>
-          <label for="phone">Phone</label>
+            <label for="phone">My Phone</label>
           <input type="phone" id="phone" value="+381641512268" readonly>
-          <label for="address">Address</label>
+            <label for="address">My Address</label>
           <input type="address" id="address" value="Belgrade, Serbia" readonly>
         </form>
+
+          <form id="contactForm">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="" placeholder="Your email">
+            <label for="phone">Subject</label>
+            <input type="text" id="subject" value="" placeholder="Subject">
+            <label for="text">Text</label>
+            <textarea id="text" rows="4" cols="50">Hi Mateja, I've read your CV and</textarea>
+
+            <a id="send">Send</a>
+
+          </form>
+
+        </section>
       </section>
     </main>
   </section>
@@ -720,7 +746,7 @@
         }
         return () => {
           clearTimeout( ref )
-          message.innerHTML = ''
+          message.innerHTML = '> '
           currentStep = 0
           step = 200
         }
@@ -745,10 +771,13 @@
 
     const hightlightActive = highlight('active')
 
-    const items = Array.from(document.querySelectorAll('nav ul li'))
+    const items = Array.from(document.querySelectorAll('nav ul li a'))
 
     items.map(
-      item => item.onclick = e => hightlightActive(item.firstElementChild)
+      item => item.onclick = e => {
+        hightlightActive(item)
+        scrollSmoothly(item.id)
+      }
     )
 
     const hash = window.location.hash
@@ -756,11 +785,22 @@
     if (hash) {
       const found = items.find
       (
-        item => `#${item.firstElementChild.textContent.match(/\w+/)[0].toLowerCase()}`=== hash
+        item => `#${item.textContent.match(/\w+/)[0].toLowerCase()}`=== hash
       )
-      hightlightActive(found.firstElementChild)
+      hightlightActive(found)
     } else {
       console.dir('no pathname')
+    }
+
+    const scrollSmoothly = selector => {
+
+      document.querySelector(selector).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+
+      history.replaceState(null, null, document.location.pathname + selector)
+
     }
 
   </script>
