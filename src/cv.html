@@ -105,7 +105,7 @@
 
     #welcome {
       display: grid;
-      grid-template-rows: auto auto 1fr;
+      grid-template-rows: auto auto auto 1fr;
       height: 100vh;
     }
 
@@ -133,11 +133,27 @@
     }
 
     #welcome h3 {
-      height: 40px;
-      padding: 80px;
+      height: 200px;
       font-size: 200%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
       color: white;
       background: #303f9f;
+    }
+
+
+    #actions {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: right;
+      background: #303f9f;
+      grid-gap: 10px;
+      padding: 10px;
+    }
+
+    #actions * {
+      color: white;
     }
 
     #skills>ul>li,
@@ -189,8 +205,9 @@
       border-radius: 30px;
       padding: 10px;
       background: #283593;
-      width: 200px;
+      width: 220px;
       color: white;
+      margin-left: 100px;
     }
 
     .badge a {
@@ -256,16 +273,16 @@
       display: grid;
     }
 
-    #collage {
+    #college {
       justify-self: right;
       margin-right: 15px;
     }
 
-    #collage div {
+    #college div {
       justify-self: right;
     }
 
-    #collage p:after {
+    #college p:after {
       content: '';
       width: 10px;
       height: 10px;
@@ -303,7 +320,7 @@
     #hobbies ul li {
       display: grid;
       align-items: center;
-      grid-template-columns: minmax(auto, 170px) 1fr;
+      grid-template-columns: minmax(auto, 200px) 1fr;
       grid-auto-flow: column;
     }
 
@@ -326,7 +343,7 @@
       border-radius: 3px 3px 0 0;
     }
 
-    form label {
+    form div {
       color: dimgray;
     }
 
@@ -431,7 +448,11 @@
     <main>
       <section id="welcome">
         <h1>Welcome to my CV</h1>
-        <h3 id="hi">> &nbsp;</h3>
+        <h3 id="hi">> _&nbsp;</h3>
+        <div id="actions">
+          <a id="run"><i class="material-icons md-24">play_circle_filled</i></a>
+          <a id="reset"><i class="material-icons md-24">replay</i></a>
+        </div>
         <div id="background">
           <a id="#skills" onclick="scrollSmoothly(this.id)">
             Go to skills &nbsp;
@@ -563,7 +584,7 @@
           <li>
             <p>English</p>
             <div class="progress-bar">
-              <div id="english" style="width: 100%;"></div>
+              <div id="english" style="width: 90%;"></div>
             </div>
             <p>Proficient</p>
           </li>
@@ -591,11 +612,11 @@
         </ul>
       </section>
       <section id="education">
-        <h1>Educaiton</h1>
+        <h1>Education</h1>
         <ul>
-          <li id="collage">
+          <li id="college">
             <div>2014 – 2017</div>
-            <p>University of Belgrade - Collage of Tourism</p>
+            <p>University of Belgrade - College of Tourism</p>
           </li>
           <div id="line"></div>
           <li id="gymnasium">
@@ -651,7 +672,7 @@
               <p>55%</p>
             </li>
             <li>
-              <p>VideScribe ( Animations )</p>
+              <p>VideoScribe ( Animations )</p>
               <div class="progress-bar">
                 <div id="video-scribe" style="width: 90%;"></div>
               </div>
@@ -678,7 +699,7 @@
           </li>
           </li>
           <li class="badge">
-            <p>Functional prog</p>
+            <p>Functional programming</p>
             <i class="material-icons md-24">computer</i>
             </a>
           </li>
@@ -727,23 +748,23 @@
         <section id="formWrapper">
 
           <form id="personalForm">
-            <label for="email">My Email</label>
+            <div>My Email</div>
             <span class="copyInput"><input type="email" id="email" value="mateja176@gmail.com" readonly></span>
-            <label for="phone">My Phone</label>
+            <div>My Phone</div>
             <span class="copyInput"><input type="phone" id="phone" value="+381641512268" readonly></span>
-            <label for="address">My Address</label>
+            <div>My Address</div>
             <span class="copyInput"><input type="address" id="address" value="Belgrade, Serbia" readonly></span>
           </form>
 
           <form id="contactForm">
-            <label for="email">Email</label>
+            <div for="email">Email</div>
             <input type="email" id="email" value="" placeholder="Your email">
-            <label for="phone">Subject</label>
+            <div for="phone">Subject</div>
             <input type="text" id="subject" value="" placeholder="Subject">
-            <label for="text">Text</label>
+            <div for="text">Text</div>
             <textarea id="text" rows="4" cols="50">Hi Mateja, I've read your CV and</textarea>
 
-            <a id="send">Send</a>
+            <a id="send" href="mailto:mateja176@gmail.com?subject=CV&body=message%20goes%20here">Send</a>
 
           </form>
 
@@ -771,6 +792,7 @@
       }
 
       return () => {
+        element.textContent.charAt(2) === '_' ? element.textContent = '> ' : ''
         if ( currentStep < steps ) {
           ref = setTimeout( write, step )
           step -= decrement
@@ -779,7 +801,7 @@
         }
         return () => {
           clearTimeout( ref )
-          message.innerHTML = '> '
+          element.innerHTML = '> _'
           currentStep = 0
           step = 200
         }
@@ -791,7 +813,13 @@
 
     const schedule = writeWithEasing( hi, text, 200, 5 )
 
-    window.onload = () => schedule();
+    let clearText
+
+    window.onload = () => clearText = schedule();
+
+    run.onclick = () => clearText = schedule();
+
+    reset.onclick = e => clearText()
 
     const highlight = cls => {
       let currentItem
@@ -843,6 +871,9 @@
         copyInput.setAttribute('data-before', 'Copied')
         copyInput.firstElementChild.select()
         document.execCommand("copy");
+        setTimeout(() => {
+          copyInput.setAttribute('data-before', 'Click to copy')
+        }, 2000);
       }
     });
 
