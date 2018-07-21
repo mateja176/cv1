@@ -316,7 +316,8 @@
       margin-bottom: 100px;
     }
 
-    form input, form textarea {
+    form input,
+    form textarea {
       line-height: 120%;
       font-size: 120%;
       padding: 10px 0 10px 10px;
@@ -336,6 +337,38 @@
     #formWrapper {
       display: grid;
       grid-auto-flow: column;
+    }
+
+    .copyInput:before, .copyInput:after {
+      visibility: hidden;
+      opacity: 0;
+      content: attr(data-before);
+      position: absolute;
+      text-align: center;
+      width: 100px;
+      margin: -50px 50px;
+      padding: 10px;
+      border-radius: 3px;
+      color: white;
+      background: dimgrey;
+      transition: opacity 0.5s;
+    }
+
+    .copyInput:after {
+      content: '';
+      width: 0;
+      background: transparent;
+      margin: -11px -120px;
+      padding: 0;
+      border-radius: 0;
+      border-style: solid;
+      border-width: 10px;
+      border-color: dimgrey transparent transparent transparent;
+    }
+
+    .copyInput:hover:before, .copyInput:hover:after {
+      visibility: visible;
+      opacity: 0.7;
     }
   </style>
 
@@ -695,12 +728,12 @@
 
           <form id="personalForm">
             <label for="email">My Email</label>
-          <input type="email" id="email" value="mateja176@gmail.com" readonly>
+            <span class="copyInput"><input type="email" id="email" value="mateja176@gmail.com" readonly></span>
             <label for="phone">My Phone</label>
-          <input type="phone" id="phone" value="+381641512268" readonly>
+            <span class="copyInput"><input type="phone" id="phone" value="+381641512268" readonly></span>
             <label for="address">My Address</label>
-          <input type="address" id="address" value="Belgrade, Serbia" readonly>
-        </form>
+            <span class="copyInput"><input type="address" id="address" value="Belgrade, Serbia" readonly></span>
+          </form>
 
           <form id="contactForm">
             <label for="email">Email</label>
@@ -769,39 +802,49 @@
       }
     }
 
-    const hightlightActive = highlight('active')
+    const hightlightActive = highlight( 'active' )
 
-    const items = Array.from(document.querySelectorAll('nav ul li a'))
+    const items = Array.from( document.querySelectorAll( 'nav ul li a' ) )
 
     items.map(
       item => item.onclick = e => {
-        hightlightActive(item)
-        scrollSmoothly(item.id)
+        hightlightActive( item )
+        scrollSmoothly( item.id )
       }
     )
 
     const hash = window.location.hash
 
-    if (hash) {
+    if ( hash ) {
       const found = items.find
-      (
-        item => `#${item.textContent.match(/\w+/)[0].toLowerCase()}`=== hash
-      )
-      hightlightActive(found)
+        (
+        item => `#${ item.textContent.match( /\w+/ )[ 0 ].toLowerCase() }` === hash
+        )
+      hightlightActive( found )
     } else {
-      console.dir('no pathname')
+      console.dir( 'no pathname' )
     }
 
     const scrollSmoothly = selector => {
 
-      document.querySelector(selector).scrollIntoView({
+      document.querySelector( selector ).scrollIntoView( {
         behavior: 'smooth',
         block: 'start'
-      })
+      } )
 
-      history.replaceState(null, null, document.location.pathname + selector)
+      history.replaceState( null, null, document.location.pathname + selector )
 
     }
+
+    Array.from(document.querySelectorAll('.copyInput'))
+    .map(copyInput => {
+      copyInput.setAttribute('data-before', 'Click to copy')
+      copyInput.onclick = e => {
+        copyInput.setAttribute('data-before', 'Copied')
+        copyInput.firstElementChild.select()
+        document.execCommand("copy");
+      }
+    });
 
   </script>
 
