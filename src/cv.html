@@ -133,6 +133,7 @@
     }
 
     #welcome h3 {
+      padding-top: 48px;
       height: 200px;
       font-size: 200%;
       display: grid;
@@ -360,7 +361,6 @@
       grid-auto-flow: row;
       justify-content: left;
       grid-gap: 10px;
-      margin-bottom: 100px;
     }
 
     form input,
@@ -428,6 +428,10 @@
       text-align: center;
       border-radius: 3px;
       width: 70px;
+    }
+
+    #contact {
+      height: 100vh;
     }
   </style>
 
@@ -804,7 +808,7 @@
             <div for="phone">Subject</div>
             <input type="text" id="subject" value="Job Application" placeholder="Subject">
             <div for="text">Text</div>
-            <textarea id="text" rows="4" cols="50">Hi Mateja, I've read your CV and</textarea>
+            <textarea id="text" rows="8" cols="50">Hi Mateja, I've read your CV and</textarea>
 
             <a id="send" href="mailto:mateja176@gmail.com?subject=CV&body=Hello">Send</a>
 
@@ -917,7 +921,8 @@
         )
       hightlightActive( found )
     } else {
-      console.dir( 'no pathname' )
+      history.pushState(null, null, `#welcome`)
+      window.scroll(0, 1)
     }
 
     const scrollSmoothly = selector => {
@@ -951,6 +956,54 @@
       const encodedBody = encodeURIComponent(body)
       e.target.href = `mailto:mateja176@gmail.com?subject=${encodedSubject}&body=${encodedBody}`
     }
+
+    const sections = Array.from(document.querySelectorAll("main > section"))
+    .map
+    (
+      section => ({ id: section.id, start: section.offsetTop, end: section.offsetTop + section.offsetHeight })
+    )
+
+    window.onscroll = (() => {
+
+      const routerState = {
+
+        _active: 'welcome',
+
+        get active() {
+          return this._active
+        },
+
+        set active(value) {
+          if (value !== this.active) {
+            this._active = value
+            history.pushState(null, null, `#${this.active}`)
+          }
+        }
+
+      }
+
+      return () => {
+
+        const offset = document.documentElement.scrollTop
+
+        routerState.active ?
+        document.getElementById(`#${routerState.active}`).classList.remove('active') :
+        ''
+
+        const found = sections.find
+        (
+          (section, i) => offset >= section.start && offset < section.end
+        )
+
+        if (found) {
+          routerState.active = found['id']
+          document.getElementById(`#${routerState.active}`).classList.add('active')
+        }
+
+      }
+
+    })()
+
   </script>
 
 </body>
