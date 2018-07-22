@@ -359,7 +359,7 @@
       display: grid;
       grid-auto-flow: row;
       justify-content: left;
-      grid-gap: 20px;
+      grid-gap: 10px;
       margin-bottom: 100px;
     }
 
@@ -371,6 +371,7 @@
       border: none;
       border-bottom: 2px solid grey;
       border-radius: 3px 3px 0 0;
+      background: #f5f5f5;
     }
 
     form div {
@@ -384,6 +385,8 @@
     #formWrapper {
       display: grid;
       grid-auto-flow: column;
+      justify-items: center;
+      align-items: flex-start;
     }
 
     .copyInput:before, .copyInput:after {
@@ -415,7 +418,16 @@
 
     .copyInput:hover:before, .copyInput:hover:after {
       visibility: visible;
-      opacity: 0.7;
+      opacity: 0.9;
+    }
+
+    #send {
+      color: white;
+      background: #283593;
+      padding: 10px;
+      text-align: center;
+      border-radius: 3px;
+      width: 70px;
     }
   </style>
 
@@ -790,11 +802,11 @@
             <div for="email">Email</div>
             <input type="email" id="email" value="" placeholder="Your email">
             <div for="phone">Subject</div>
-            <input type="text" id="subject" value="" placeholder="Subject">
+            <input type="text" id="subject" value="Job Application" placeholder="Subject">
             <div for="text">Text</div>
             <textarea id="text" rows="4" cols="50">Hi Mateja, I've read your CV and</textarea>
 
-            <a id="send" href="mailto:mateja176@gmail.com?subject=CV&body=message%20goes%20here">Send</a>
+            <a id="send" href="mailto:mateja176@gmail.com?subject=CV&body=Hello">Send</a>
 
           </form>
 
@@ -932,6 +944,13 @@
       }
     });
 
+    send.onclick = e => {
+      const subject = 'Job Application'
+      const encodedSubject = encodeURIComponent(subject)
+      const body = "Hi Mateja, I've read your CV and"
+      const encodedBody = encodeURIComponent(body)
+      e.target.href = `mailto:mateja176@gmail.com?subject=${encodedSubject}&body=${encodedBody}`
+    }
   </script>
 
 </body>
