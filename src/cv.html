@@ -321,7 +321,8 @@
       border-radius: 50%;
     }
 
-    #line, #line:before {
+    #line,
+    #line:before {
       width: 2px;
       height: 400px;
       background: #283593;
@@ -389,7 +390,8 @@
       align-items: flex-start;
     }
 
-    .copyInput:before, .copyInput:after {
+    .copyInput:before,
+    .copyInput:after {
       visibility: hidden;
       opacity: 0;
       content: attr(data-before);
@@ -416,7 +418,8 @@
       border-color: dimgrey transparent transparent transparent;
     }
 
-    .copyInput:hover:before, .copyInput:hover:after {
+    .copyInput:hover:before,
+    .copyInput:hover:after {
       visibility: visible;
       opacity: 0.9;
     }
@@ -496,8 +499,12 @@
         <h1>Welcome to my CV</h1>
         <h3 id="hi">> _</h3>
         <div id="actions">
-          <a id="run"><i class="material-icons md-24">play_circle_filled</i></a>
-          <a id="reset"><i class="material-icons md-24">replay</i></a>
+          <a id="run">
+            <i class="material-icons md-24">play_circle_filled</i>
+          </a>
+          <a id="reset">
+            <i class="material-icons md-24">replay</i>
+          </a>
         </div>
         <div id="background">
           <a id="#skills" onclick="scrollSmoothly(this.id)">
@@ -795,11 +802,17 @@
 
           <form id="personalForm">
             <div>My Email</div>
-            <span class="copyInput"><input type="email" id="email" value="mateja176@gmail.com" readonly></span>
+            <span class="copyInput">
+              <input type="email" id="email" value="mateja176@gmail.com" readonly>
+            </span>
             <div>My Phone</div>
-            <span class="copyInput"><input type="phone" id="phone" value="+381641512268" readonly></span>
+            <span class="copyInput">
+              <input type="phone" id="phone" value="+381641512268" readonly>
+            </span>
             <div>My Address</div>
-            <span class="copyInput"><input type="address" id="address" value="Belgrade, Serbia" readonly></span>
+            <span class="copyInput">
+              <input type="address" id="address" value="Belgrade, Serbia" readonly>
+            </span>
           </form>
 
           <form id="contactForm">
@@ -847,7 +860,7 @@
       }
 
       return () => {
-        element.textContent.charAt(2) === '_' ? element.textContent = '> ' : ''
+        element.textContent.charAt( 2 ) === '_' ? element.textContent = '> ' : ''
         cycle()
         return () => {
           clearTimeout( ref )
@@ -888,26 +901,26 @@
       item => item.onclick = e => {
         hightlightActive( item )
         scrollSmoothly( item.id )
-        if (item.id === '#education') {
-          setTimeout(() => line.style.setProperty('--my-animation', 'grow'), 200)
+        if ( item.id === '#education' ) {
+          setTimeout( () => line.style.setProperty( '--my-animation', 'grow' ), 200 )
         }
-        if (item.id === '#skills') {
-          Array.from(document.querySelectorAll('#skills ul li div div'))
-          .map(item =>
-            setTimeout(() => item.style.setProperty('--my-animation', 'expand'), 200)
-          )
+        if ( item.id === '#skills' ) {
+          Array.from( document.querySelectorAll( '#skills ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
         }
-        if (item.id === '#languages') {
-          Array.from(document.querySelectorAll('#languages ul li div div'))
-          .map(item =>
-            setTimeout(() => item.style.setProperty('--my-animation', 'expand'), 200)
-          )
+        if ( item.id === '#languages' ) {
+          Array.from( document.querySelectorAll( '#languages ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
         }
-        if (item.id === '#other') {
-          Array.from(document.querySelectorAll('#other ul li div div'))
-          .map(item =>
-            setTimeout(() => item.style.setProperty('--my-animation', 'expand'), 200)
-          )
+        if ( item.id === '#other' ) {
+          Array.from( document.querySelectorAll( '#other ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
         }
       }
     )
@@ -921,8 +934,8 @@
         )
       hightlightActive( found )
     } else {
-      history.pushState(null, null, `#welcome`)
-      window.scroll(0, 1)
+      history.pushState( null, null, `#welcome` )
+      window.scroll( 0, 1 )
     }
 
     const scrollSmoothly = selector => {
@@ -936,34 +949,34 @@
 
     }
 
-    Array.from(document.querySelectorAll('.copyInput'))
-    .map(copyInput => {
-      copyInput.setAttribute('data-before', 'Click to copy')
-      copyInput.onclick = e => {
-        copyInput.setAttribute('data-before', 'Copied')
-        copyInput.firstElementChild.select()
-        document.execCommand("copy");
-        setTimeout(() => {
-          copyInput.setAttribute('data-before', 'Click to copy')
-        }, 2000);
-      }
-    });
+    Array.from( document.querySelectorAll( '.copyInput' ) )
+      .map( copyInput => {
+        copyInput.setAttribute( 'data-before', 'Click to copy' )
+        copyInput.onclick = e => {
+          copyInput.setAttribute( 'data-before', 'Copied' )
+          copyInput.firstElementChild.select()
+          document.execCommand( "copy" );
+          setTimeout( () => {
+            copyInput.setAttribute( 'data-before', 'Click to copy' )
+          }, 2000 );
+        }
+      } );
 
     send.onclick = e => {
       const subject = 'Job Application'
-      const encodedSubject = encodeURIComponent(subject)
+      const encodedSubject = encodeURIComponent( subject )
       const body = "Hi Mateja, I've read your CV and"
-      const encodedBody = encodeURIComponent(body)
-      e.target.href = `mailto:mateja176@gmail.com?subject=${encodedSubject}&body=${encodedBody}`
+      const encodedBody = encodeURIComponent( body )
+      e.target.href = `mailto:mateja176@gmail.com?subject=${ encodedSubject }&body=${ encodedBody }`
     }
 
-    const sections = Array.from(document.querySelectorAll("main > section"))
-    .map
-    (
-      section => ({ id: section.id, start: section.offsetTop, end: section.offsetTop + section.offsetHeight })
-    )
+    const sections = Array.from( document.querySelectorAll( "main > section" ) )
+      .map
+      (
+      section => ( { id: section.id, start: section.offsetTop, end: section.offsetTop + section.offsetHeight } )
+      )
 
-    window.onscroll = (() => {
+    window.onscroll = ( () => {
 
       const routerState = {
 
@@ -973,10 +986,10 @@
           return this._active
         },
 
-        set active(value) {
-          if (value !== this.active) {
+        set active( value ) {
+          if ( value !== this.active ) {
             this._active = value
-            history.pushState(null, null, `#${this.active}`)
+            history.pushState( null, null, `#${ this.active }` )
           }
         }
 
@@ -987,22 +1000,22 @@
         const offset = document.documentElement.scrollTop
 
         routerState.active ?
-        document.getElementById(`#${routerState.active}`).classList.remove('active') :
-        ''
+          document.getElementById( `#${ routerState.active }` ).classList.remove( 'active' ) :
+          ''
 
         const found = sections.find
-        (
-          (section, i) => offset >= section.start && offset < section.end
-        )
+          (
+          ( section, i ) => offset >= section.start && offset < section.end
+          )
 
-        if (found) {
-          routerState.active = found['id']
-          document.getElementById(`#${routerState.active}`).classList.add('active')
+        if ( found ) {
+          routerState.active = found[ 'id' ]
+          document.getElementById( `#${ routerState.active }` ).classList.add( 'active' )
         }
 
       }
 
-    })()
+    } )()
 
   </script>
 
