@@ -338,7 +338,7 @@
       content: '';
       position: absolute;
       visibility: visible;
-      animation: var(--my-animation) 2s ease-in-out forwards;
+      animation: var(--my-animation) 1s ease-in-out forwards;
     }
 
     @keyframes grow {
@@ -437,6 +437,11 @@
     #contact {
       height: 100vh;
     }
+
+    #skills > ul, #languages > ul, #education > ul, #other > ul {
+      margin: 100px 0;
+    }
+
   </style>
 
   <section id="wrapper">
@@ -587,6 +592,20 @@
             </div>
             <p>80%</p>
           </li>
+          <li>
+            <p>HTML</p>
+            <div class="progress-bar">
+              <div id="pwa" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li>
+            <p>CSS</p>
+            <div class="progress-bar">
+              <div id="pwa" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
         </ul>
         <section id="links">
           <h3>Relevant Links</h3>
@@ -630,7 +649,7 @@
           </p>
           <i class="material-icons md-24">directions_run</i>
         </div>
-        <!-- <iframe src="https://officialfitneer.firebaseapp.com"></iframe> -->
+        <iframe src="https://officialfitneer.firebaseapp.com"></iframe>
       </section>
       <section id="languages">
         <h1>Languages</h1>
