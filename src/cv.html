@@ -219,7 +219,6 @@
       background: #283593;
       width: 220px;
       color: white;
-      margin-left: 100px;
     }
 
     .badge a {
@@ -440,6 +439,22 @@
 
     #skills > ul, #languages > ul, #education > ul, #other > ul {
       margin: 100px 0;
+    }
+
+    #skills ul,
+    #links ul,
+    #languages ul,
+    #other ul,
+    #hobbies ul {
+      justify-items: center;
+    }
+
+    #skills>ul>li {
+      grid-template-columns: minmax(auto, 130px) auto 1fr;
+    }
+
+    #languages>ul>li {
+      grid-template-columns: minmax(auto, 60px) auto 1fr;
     }
 
   </style>
@@ -702,6 +717,27 @@
         <h1>Other</h1>
         <ul>
           <li>
+            <p>Npm and npm scripts</p>
+            <div class="progress-bar">
+              <div id="git" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li>
+            <p>Webpack</p>
+            <div class="progress-bar">
+              <div id="git" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li>
+            <p>Babel</p>
+            <div class="progress-bar">
+              <div id="git" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li>
             <p>Git</p>
             <div class="progress-bar">
               <div id="git" style="--my-width: 80;"></div>
@@ -736,13 +772,6 @@
                 <div id="office" style="--my-width: 60;"></div>
               </div>
               <p>60%</p>
-            </li>
-            <li>
-              <p>Adobe Flash ( Animations )</p>
-              <div class="progress-bar">
-                <div id="flash" style="--my-width: 55;"></div>
-              </div>
-              <p>55%</p>
             </li>
             <li>
               <p>VideoScribe ( Animations )</p>
