@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -990,6 +991,27 @@
           if ( value !== this.active ) {
             this._active = value
             history.pushState( null, null, `#${ this.active }` )
+            if ( value === 'education' ) {
+              setTimeout( () => line.style.setProperty( '--my-animation', 'grow' ), 200 )
+            }
+            if ( value === 'skills' ) {
+              Array.from( document.querySelectorAll( '#skills ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
+            if ( value === 'languages' ) {
+              Array.from( document.querySelectorAll( '#languages ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
+            if ( value === 'other' ) {
+              Array.from( document.querySelectorAll( '#other ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
           }
         }
 
