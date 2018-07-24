@@ -294,7 +294,7 @@
       justify-self: right;
     }
 
-    #college p:after {
+    #college div:after {
       content: '';
       width: 10px;
       height: 10px;
@@ -302,6 +302,7 @@
       position: absolute;
       margin-left: 11px;
       border-radius: 50%;
+      margin-top: 5px;
     }
 
     #gymnasium {
@@ -311,7 +312,7 @@
       margin-left: 15px;
     }
 
-    #gymnasium p:before {
+    #gymnasium div:before {
       content: '';
       width: 10px;
       height: 10px;
@@ -319,6 +320,7 @@
       position: absolute;
       margin-left: -21px;
       border-radius: 50%;
+      margin-top: 5px;
     }
 
     #line,
@@ -467,10 +469,48 @@
     #other ul {
       padding-right: 45px;
     }
+
+    #hamburger {
+      display: none;
+      border-radius: 50%;
+      position: fixed;
+      background: #e91e63;
+      color: white;
+      height: 50px;
+      width: 50px;
+      right: 10px;
+      top: 10px;
+      z-index: 2;
+      align-items: center;
+      justify-items: center;
+    }
+
+    @media only screen and (max-width: 800px) {
+      nav {
+        display: none;
+        z-index: 2;
+      }
+
+      #nav-shadow {
+        display: none;
+      }
+
+      #wrapper {
+        grid-template-columns: auto;
+      }
+
+      #hamburger {
+        display: grid;
+      }
+    }
+
+    .visible {
+      display: grid;
+    }
   </style>
 
   <section id="wrapper">
-    <nav>
+    <nav id="navigation">
       <ul>
         <li>
           <a id="#welcome">
@@ -524,6 +564,10 @@
     </nav>
 
     <div id="nav-shadow"></div>
+
+    <div id="hamburger">
+      <i class="material-icons md-24">menu</i>
+    </div>
 
     <main>
       <section id="welcome">
@@ -674,7 +718,7 @@
           </p>
           <i class="material-icons md-24">directions_run</i>
         </div>
-        <iframe src="https://officialfitneer.firebaseapp.com"></iframe>
+        <!-- <iframe src="https://officialfitneer.firebaseapp.com"></iframe> -->
       </section>
       <section id="languages">
         <h1>Languages</h1>
@@ -888,6 +932,7 @@
 
         </section>
       </section>
+      <h1>Thanks for reading!</h1>
     </main>
   </section>
 
@@ -1096,6 +1141,10 @@
       }
 
     } )()
+
+    hamburger.onclick = () => {
+      navigation.classList.toggle('visible')
+    }
 
   </script>
 
