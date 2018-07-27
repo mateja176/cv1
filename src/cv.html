@@ -493,6 +493,20 @@
         height: 100%;
       }
 
+      nav ul {
+        grid-template-rows: repeat(auto-fill, minmax(auto, 80px));
+      }
+
+      nav ul:after {
+        content: '';
+        position: absolute;
+        background: #c5cae9;
+        width: 2px;
+        height: 500px;
+        top: 640px;
+        left: 15px;
+      }
+
       #nav-shadow {
         display: none;
       }
