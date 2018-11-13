@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Mateja CV</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <style>
+    :root {
+      font-family: Helvetica, sans-serif;
+      --logo-dimensions: 80px;
+    }
+
+    body {
+      margin: 0;
+      background: #e8eaf6;
+    }
+
+    h1,
+    h3 {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    a {
+      text-decoration: none;
+      color: initial;
+      cursor: pointer;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+    }
+
+    #wrapper {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+
+    #wrapper h1,
+    #links h3 {
+      padding: 20px 0;
+      padding-left: 15px;
+      background: #304ffe;
+      color: white;
+    }
+
+    #nav-shadow {
+      width: 180px;
+    }
+
+    nav {
+      position: fixed;
+      height: 100vh;
+      display: grid;
+      width: 180px;
+      background: #283593;
+    }
+
+    nav ul {
+      text-align: center;
+    }
+
+    nav ul li {
+      display: grid;
+      align-items: center;
+      grid-auto-flow: column;
+      grid-template-columns: auto 1fr;
+    }
+
+    nav ul li:before {
+      content: '';
+      border-right: 2px solid #c5cae9;
+      background: var(--before-background);
+      width: 15px;
+      height: 100%;
+      box-shadow: 0 -5px inset #283593, 0 5px inset #283593;
+    }
+
+    nav ul li a {
+      padding: 14px 0;
+      color: white;
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+    }
+
+    nav ul a:before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      position: relative;
+      background: white;
+      border-radius: 50%;
+      left: -6px;
+    }
+
+    nav ul a:hover {
+      background: #7986cb;
+    }
+
+    .active {
+      background: #7986cb;
+    }
+
+    #welcome {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      height: 100vh;
+    }
+
+    #welcome #background {
+      background: linear-gradient( 180deg,
+      #303f9f 0%,
+      #303f9f 40%,
+      #e8eaf6 40%,
+      #e8eaf6 100%);
+      background-attachment: fixed;
+      display: grid;
+      justify-content: center;
+      align-content: center;
+    }
+
+    #welcome #background a {
+      background: #e91e63;
+      color: white;
+      border-radius: 3px;
+      padding: 20px;
+      font-size: 120%;
+      display: grid;
+      align-items: center;
+      grid-auto-flow: column;
+    }
+
+    #welcome h3 {
+      padding-top: 48px;
+      height: 200px;
+      font-size: 200%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      color: white;
+      background: #303f9f;
+    }
+
+
+    #actions {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: right;
+      background: #303f9f;
+      grid-gap: 10px;
+      padding: 10px;
+    }
+
+    #actions * {
+      color: white;
+    }
+
+    #skills>ul>li,
+    #languages ul li,
+    #other ul li {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: minmax(auto, 100px) auto 1fr;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #skills ul li p:first-of-type,
+    #languages ul li p:first-of-type,
+    #other ul li p:first-of-type {
+      justify-self: right;
+    }
+
+    .progress-bar {
+      margin: 0 15px;
+      align-self: center;
+      width: 400px;
+      height: 8px;
+      background: #c5cae9;
+      position: relative;
+    }
+
+    .progress-bar div {
+      position: absolute;
+      height: 8px;
+      background: #283593;
+      animation: var(--my-animation) 2s ease-in-out forwards;
+    }
+
+    @keyframes expand {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: calc(var(--my-width) * 1%);
+      }
+    }
+
+    #links ul,
+    #hobbies ul,
+    #education ul,
+    #experience ul {
+      margin: 15px;
+      display: grid;
+      grid-gap: 15px;
+    }
+
+    #links ul li>* {
+      color: white;
+    }
+
+    .badge {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-auto-flow: column;
+      border-radius: 30px;
+      padding: 10px;
+      background: #283593;
+      width: 220px;
+      color: white;
+    }
+
+    .badge a {
+      display: grid;
+      align-items: center;
+      grid-template-columns: minmax(auto, 100px) 1fr;
+      grid-auto-flow: column;
+      justify-content: center;
+    }
+
+    .badge p {
+      margin: 0 15px 0 0;
+      justify-self: right;
+    }
+
+    .badge a i {
+      justify-self: center;
+    }
+
+    #portfolio {
+      display: grid;
+      justify-items: center;
+    }
+
+    #portfolio h1 {
+      justify-self: stretch;
+    }
+
+    #portfolio a {
+      margin: 15px;
+      font-style: normal;
+    }
+
+    #portfolio a i {
+      justify-self: left;
+    }
+
+    #portfolio div {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      grid-template-columns: auto auto 1fr;
+      color: #283593;
+      font-style: italic;
+    }
+
+    #portfolio iframe {
+      margin: 15px;
+      width: 400px;
+      height: 600px;
+      border: 1px solid #c5cae9;
+    }
+
+    #education ul,
+    #experience ul {
+      height: 400px;
+      grid-gap: 0;
+      justify-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: auto auto auto;
+      align-items: center;
+    }
+
+    #education ul li {
+      display: grid;
+    }
+
+    #experience ul li {
+      display: grid;
+      margin-bottom: 40px;
+    }
+
+    #college {
+      justify-self: right;
+      margin-right: 15px;
+    }
+
+    #college div {
+      justify-self: right;
+    }
+
+    #college div:after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #283593;
+      position: absolute;
+      margin-left: 11px;
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    #highoutput {
+      justify-self: right;
+      margin-right: 15px;
+    }
+
+    #highoutput div {
+      justify-self: right;
+    }
+
+    #highoutput div:after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #283593;
+      position: absolute;
+      margin-left: 11px;
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    #gymnasium {
+      grid-row: 2;
+      grid-column: 3;
+      justify-self: left;
+      margin-left: 15px;
+    }
+
+    #gymnasium div:before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #283593;
+      position: absolute;
+      margin-left: -21px;
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    #fitneer {
+      grid-row: 2;
+      grid-column: 3;
+      justify-self: left;
+      margin-left: 15px;
+    }
+
+    #fitneer div:before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #283593;
+      position: absolute;
+      margin-left: -21px;
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    .line,
+    .line:before {
+      width: 2px;
+      height: 400px;
+      background: #283593;
+      grid-column: 2;
+      grid-row: 1/3;
+      visibility: hidden;
+      position: relative;
+    }
+
+    .line:before {
+      height: 0;
+      content: '';
+      position: absolute;
+      visibility: visible;
+      animation: var(--my-animation) 1s ease-in-out forwards;
+    }
+
+    @keyframes grow {
+      0% {
+        height: 0;
+      }
+      100% {
+        height: calc(var(--my-height) * 1px);
+      }
+    }
+
+    #hobbies ul li {
+      display: grid;
+      align-items: center;
+      grid-template-columns: minmax(auto, 200px) 1fr;
+      grid-auto-flow: column;
+    }
+
+    form {
+      margin: 15px;
+      display: grid;
+      grid-auto-flow: row;
+      justify-content: left;
+      grid-gap: 10px;
+    }
+
+    form input,
+    form textarea {
+      line-height: 120%;
+      font-size: 120%;
+      padding: 10px 0 10px 10px;
+      border: none;
+      border-bottom: 2px solid grey;
+      border-radius: 3px 3px 0 0;
+      background: #f5f5f5;
+    }
+
+    form div {
+      color: dimgray;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    #formWrapper {
+      display: grid;
+      grid-auto-flow: column;
+      justify-items: center;
+      align-items: flex-start;
+    }
+
+    #skills>ul>li:before,
+    #other ul li:before,
+    .copyInput:before {
+      content: attr(data-before);
+      padding: 10px;
+      color: white;
+      background: dimgrey;
+      text-align: center;
+      position: absolute;
+      margin-top: -33px;
+      opacity: 0;
+      width: 100px;
+      height: 30px;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: scale(0);
+      transform-origin: bottom;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 45% 75%, 25% 100%, 25% 75%, 0% 75%);
+    }
+
+    #skills>ul>li:hover:before,
+    #other ul li:hover:before,
+    .copyInput:hover:before {
+      opacity: 0.9;
+      transform: scale(1);
+    }
+
+    #send {
+      color: white;
+      background: #283593;
+      padding: 10px;
+      text-align: center;
+      border-radius: 3px;
+      width: 70px;
+    }
+
+    #contact {
+      height: 100vh;
+    }
+
+    #skills>ul,
+    #languages>ul,
+    #education>ul,
+    #experience>ul,
+    #other>ul {
+      margin: 100px 0;
+    }
+
+    #skills ul,
+    #links ul,
+    #languages ul,
+    #other ul,
+    #hobbies ul {
+      justify-items: center;
+    }
+
+    #languages>ul>li {
+      grid-template-columns: minmax(auto, 60px) auto 1fr;
+    }
+
+    #skills ul {
+      padding-right: 40px;
+    }
+
+    #other ul {
+      padding-right: 45px;
+    }
+
+    #hamburger {
+      display: none;
+      border-radius: 50%;
+      position: fixed;
+      background: #e91e63;
+      color: white;
+      height: 50px;
+      width: 50px;
+      right: 10px;
+      top: 10px;
+      z-index: 2;
+      align-items: center;
+      justify-items: center;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: var(--logo-dimensions);
+      height: var(--logo-dimensions);
+    }
+
+    @media only screen and (max-width: 800px) {
+      nav {
+        display: none;
+        z-index: 2;
+        height: 100%;
+      }
+
+      nav ul {
+        grid-template-rows: repeat(auto-fill, minmax(auto, 80px));
+      }
+
+      nav ul:after {
+        content: '';
+        position: absolute;
+        background: #c5cae9;
+        width: 2px;
+        height: 500px;
+        top: 640px;
+        left: 15px;
+      }
+
+      #nav-shadow {
+        display: none;
+      }
+
+      #wrapper {
+        grid-template-columns: auto;
+      }
+
+      #hamburger {
+        display: grid;
+      }
+    }
+
+    .visible {
+      display: grid;
+    }
+  </style>
+
+  <section id="wrapper">
+    <nav id="navigation">
+      <ul>
+        <li>
+          <a id="#welcome">
+            Welcome
+            <i class="material-icons md-24">bookmark</i>
+          </a>
+        </li>
+        <li>
+          <a id="#skills">
+            Skills
+            <i class="material-icons md-24">build</i>
+          </a>
+        </li>
+        <li>
+          <a id="#portfolio">
+            Portfolio
+            <i class="material-icons md-24">work</i>
+          </a>
+        </li>
+        <li>
+          <a id="#experience">
+            Experience
+            <i class="material-icons md-24">computer</i>
+          </a>
+        </li>
+        <li>
+          <a id="#links">
+            Links
+            <i class="material-icons md-24">link</i>
+          </a>
+        </li>
+        <li>
+          <a id="#languages">
+            Languages
+            <i class="material-icons md-24">language</i>
+          </a>
+        </li>
+        <li>
+          <a id="#education">
+            Education
+            <i class="material-icons md-24">library_books</i>
+          </a>
+        </li>
+        <li>
+          <a id="#other">
+            Other
+            <i class="material-icons md-24">stars</i>
+          </a>
+        </li>
+        <li>
+          <a id="#hobbies">
+            Hobbies
+            <i class="material-icons md-24">library_music</i>
+          </a>
+        </li>
+        <li>
+          <a id="#contact">
+            Contact
+            <i class="material-icons md-24">email</i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="nav-shadow"></div>
+
+    <div id="hamburger">
+      <i class="material-icons md-24">menu</i>
+    </div>
+
+    <main>
+      <section id="welcome">
+        <h1>Welcome to my CV</h1>
+        <h3 id="hi">> _</h3>
+        <div id="actions">
+          <a id="run">
+            <i class="material-icons md-24">play_circle_filled</i>
+          </a>
+          <a id="reset">
+            <i class="material-icons md-24">replay</i>
+          </a>
+        </div>
+        <div id="background">
+          <a id="#skills" onclick="scrollSmoothly(this.id)">
+            Go to skills &nbsp;
+            <i class="material-icons md-24">arrow_downward</i>
+          </a>
+        </div>
+      </section>
+      <section id="skills">
+        <h1>Skills</h1>
+        <ul>
+          <li data-before="Javascript">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">
+              <img class="logo" src="../img/javascript.jpg" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="javascript" style="--my-width: 95;"></div>
+            </div>
+            <p>95%</p>
+          </li>
+          <li data-before="Typescript">
+            <a href="https://typescriptlang.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/typescript.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="typescript" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="Angular">
+            <a href="https://angular.io" target="_blank" rel="noopener">
+              <img class="logo" src="../img/angular.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="angular" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="React">
+            <a href="https://reactjs.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/react.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="react" style="--my-width: 95;"></div>
+            </div>
+            <p>95%</p>
+          </li>
+          <li data-before="React Native">
+            <a href="https://facebook.github.io/react-native" target="_blank" rel="noopener">
+              <img class="logo" src="../img/react-native.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="react-native" style="--my-width: 70;"></div>
+            </div>
+            <p>70%</p>
+          </li>
+          <li data-before="Vue">
+            <a href="https://vuejs.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/vue.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="vue" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li data-before="RxJS">
+            <a href="https://rxjs-dev.firebaseapp.com/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/rxjs.ico" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="rxjs" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="Jest">
+            <a href="https://jestjs.io" target="_blank" rel="noopener">
+              <img class="logo" src="../img/jest.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="jest" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="Redux">
+            <a href="https://redux.js.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/redux.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="ngrx" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="Firebase">
+            <a href="https://firebase.google.com/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/firebase.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="firebase" style="--my-width: 80;"></div>
+            </div>
+            <p>80%</p>
+          </li>
+          <li data-before="Express">
+            <a href="https://expressjs.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/express.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="express" style="--my-width: 80;"></div>
+            </div>
+            <p>80%</p>
+          </li>
+          <li data-before="Koa">
+            <a href="https://koajs.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/koa.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="koa" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li data-before="Node">
+            <a href="https://nodejs.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/node.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="node" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li data-before="GraphQL">
+            <a href="https://graphql.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/graphql.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="graphql" style="--my-width: 65;"></div>
+            </div>
+            <p>65%</p>
+          </li>
+          <li>
+          <li data-before="Bootstrap">
+            <a href="https://getbootstrap.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/bootstrap.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="bootstrap" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="Sass">
+            <a href="https://sass-lang.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/sass.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="sass" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="OOP">
+            <a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">
+              <img class="logo" src="../img/oop.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="oop" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="FP">
+            <a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">
+              <img class="logo" src="../img/functional-programming.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="functional-programming" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="Gatsby">
+            <a href="https://gatsbyjs.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/gatsby.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="gatsby" style="--my-width: 80;"></div>
+            </div>
+            <p>80%</p>
+          </li>
+        </ul>
+      </section>
+      <section id="portfolio">
+        <h1>Portfolio</h1>
+        <div>
+          <a class="badge" href="https://officialfitneer.firebaseapp.com">
+            <p>Fitneer</p>
+            <i class="material-icons md-24">link</i>
+          </a>
+          <p>
+            Find your fitness peer &nbsp;
+          </p>
+          <i class="material-icons md-24">directions_run</i>
+        </div>
+        <iframe src="https://officialfitneer.firebaseapp.com"></iframe>
+      </section>
+      <section id="experience">
+        <h1>Experience</h1>
+        <ul>
+          <li id="highoutput">
+            <p>HighOutput Ventures</p>
+            <div>2018</div>
+            <p>
+              <b>Frontend Developer</b>
+            </p>
+          </li>
+          <div class="line" style="--my-height: 400"></div>
+          <li id="fitneer">
+            <p>Fitneer</p>
+            <div>2017 – 2018</div>
+            <p>
+              <b>Fullstack Developer</b>
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section id="links">
+        <h3>Relevant Links</h3>
+        <ul>
+          <li class="badge">
+            <a href="https://stackshare.io/mytee306">
+              <p>Stackshare</p>
+              <i class="react-icons md-24">link</i>
+            </a>
+          </li>
+          <li class="badge">
+            <a href="https://www.linkedin.com/in/mateja-petrović-a5a07ab2">
+              <p>LinkedIn</p>
+              <i class="material-icons md-24">link</i>
+            </a>
+          </li>
+          <li class="badge">
+            <a href="https://github.com/mytee306">
+              <p>Github</p>
+              <i class="material-icons md-24">link</i>
+            </a>
+          </li>
+          <li class="badge">
+            <a href="https://codepen.io/mytee306">
+              <p>Codepen</p>
+              <i class="material-icons md-24">link</i>
+            </a>
+          </li>
+          <li class="badge">
+            <a href="https://stackblitz.io/@mytee306">
+              <p>Stackblitz</p>
+              <i class="material-icons md-24">link</i>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="languages">
+        <h1>Languages</h1>
+        <ul>
+          <li>
+            <p>English</p>
+            <div class="progress-bar">
+              <div id="english" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li>
+            <p>German</p>
+            <div class="progress-bar">
+              <div id="german" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li>
+            <p>Serbian</p>
+            <div class="progress-bar">
+              <div id="serbian" style="--my-width: 95;"></div>
+            </div>
+            <p>95%</p>
+          </li>
+        </ul>
+      </section>
+      <section id="education">
+        <h1>Education</h1>
+        <ul>
+          <li id="college">
+            <div>2014 – 2017</div>
+            <p>University of Belgrade - College of Tourism</p>
+          </li>
+          <div class="line" style="--my-height: 400"></div>
+          <li id="gymnasium">
+            <div>2010 – 2014</div>
+            <p>Forth Gymnasium in Belgrade</p>
+          </li>
+        </ul>
+      </section>
+      <section id="other">
+        <h1>Other</h1>
+        <ul>
+          <li data-before="NPM">
+            <a href="https://npmjs.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/npm.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="npm" style="--my-width: 90;"></div>
+            </div>
+            <p>90%</p>
+          </li>
+          <li data-before="Webpack">
+            <a href="https://webpack.js.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/webpack.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="webpack" style="--my-width: 80;"></div>
+            </div>
+            <p>80%</p>
+          </li>
+          <li data-before="Parcel">
+            <a href="https://parceljs.org" target="_blank" rel="noopener">
+              <img class="logo" src="../img/parcel.jpeg" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="parcel" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="Babel">
+            <a href="https://babeljs.io" target="_blank" rel="noopener">
+              <img class="logo" src="../img/babel.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="babel" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li data-before="Git">
+            <a href="https://git-scm.com" target="_blank" rel="noopener">
+              <img class="logo" src="../img/git.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="git" style="--my-width: 85;"></div>
+            </div>
+            <p>85%</p>
+          </li>
+          <li data-before="Linux">
+            <a href="https://www.linux.org/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/linux.svg" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="linux" style="--my-width: 70;"></div>
+            </div>
+            <p>70%</p>
+          </li>
+          <li>
+          <li data-before="Docker">
+            <a href="https://www.docker.com/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/docker.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="docker" style="--my-width: 60;"></div>
+            </div>
+            <p>70%</p>
+          </li>
+          <li data-before="Office">
+            <a href="https://www.libreoffice.org/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/office.ico" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="office" style="--my-width: 75;"></div>
+            </div>
+            <p>75%</p>
+          </li>
+          <li data-before="Gimp">
+            <a href="https://www.gimp.org/" target="_blank" rel="noopener">
+              <img class="logo" src="../img/gimp.png" alt="logo">
+            </a>
+            <div class="progress-bar">
+              <div id="gimp" style="--my-width: 80;"></div>
+            </div>
+            <p>80%</p>
+          </li>
+        </ul>
+      </section>
+      <section id="hobbies">
+        <h1>Hobbies</h1>
+        <ul>
+          </li>
+          <li class="badge">
+            <p>Data science and ML</p>
+            <i class="material-icons md-24">insert_chart</i>
+            </a>
+          </li>
+          <li class="badge">
+            <p>Designing</p>
+            <i class="material-icons md-24">art_track</i>
+            </a>
+          </li>
+          </li>
+          <li class="badge">
+            <p>Arduino development</p>
+            <i class="material-icons md-24">developer_board</i>
+            </a>
+          </li>
+          </li>
+          <li class="badge">
+            <p>Entrepreneurship</p>
+            <i class="material-icons md-24">highlight</i>
+            </a>
+          </li>
+          <li class="badge">
+            <p>Writing</p>
+            <i class="material-icons md-24">library_books</i>
+            </a>
+          </li>
+          <li class="badge">
+            <p>Painting</p>
+            <i class="material-icons md-24">brush</i>
+            </a>
+          </li>
+          <li class="badge">
+            <p>Reading</p>
+            <i class="material-icons md-24">chrome_reader_mode</i>
+            </a>
+          </li>
+          <li class="badge">
+            <p>Working out</p>
+            <i class="material-icons md-24">fitness_center</i>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h1>Contact</h1>
+        <section id="formWrapper">
+
+          <form id="personalForm">
+            <div>My Email</div>
+            <span class="copyInput">
+              <input type="email" id="email" value="mateja176@gmail.com" readonly>
+            </span>
+            <div>My Phone</div>
+            <span class="copyInput">
+              <input type="phone" id="phone" value="+381641512268" readonly>
+            </span>
+            <div>My Address</div>
+            <span class="copyInput">
+              <input type="address" id="address" value="Belgrade, Serbia" readonly>
+            </span>
+          </form>
+
+          <form id="contactForm">
+            <div for="email">Email</div>
+            <input type="email" id="email" value="" placeholder="Your email">
+            <div for="phone">Subject</div>
+            <input type="text" id="subject" value="Job Application" placeholder="Subject">
+            <div for="text">Text</div>
+            <textarea id="text" rows="8" cols="50">Hi Mateja, I've read your CV and</textarea>
+
+            <a id="send" href="mailto:mateja176@gmail.com?subject=CV&body=Hello">Send</a>
+
+          </form>
+
+        </section>
+      </section>
+      <h1>Thanks for reading!</h1>
+    </main>
+  </section>
+
+  <script>
+
+    const writeWithEasing = ( element, text = 'Hi', s = 200, decrement = 5 ) => {
+
+      let step = s
+
+      const steps = text.length
+
+      let currentStep = 0
+
+      let ref
+
+      const write = () => {
+        element.innerHTML += text.charAt( currentStep )
+        currentStep++
+        cycle()
+      }
+
+      const cycle = () => {
+        if ( currentStep < steps ) {
+          ref = setTimeout( write, step )
+          step -= decrement
+        } else {
+          return 'done';
+        }
+      }
+
+      return () => {
+        element.textContent.charAt( 2 ) === '_' ? element.textContent = '> ' : ''
+        cycle()
+        return () => {
+          clearTimeout( ref )
+          element.innerHTML = '> _'
+          currentStep = 0
+          step = 200
+        }
+      }
+
+    }
+
+    const text = 'Hi, my name is Mateja Petrovic';
+
+    const schedule = writeWithEasing( hi, text, 200, 5 )
+
+    let clearText
+
+    window.onload = () => clearText = schedule();
+
+    run.onclick = () => clearText = schedule();
+
+    reset.onclick = e => clearText()
+
+    const highlight = cls => {
+      let currentItem
+      return newItem => {
+        currentItem ? currentItem.classList.remove( cls ) : ''
+        newItem.classList.add( cls )
+        currentItem = newItem
+      }
+    }
+
+    const hightlightActive = highlight( 'active' )
+
+    const items = Array.from( document.querySelectorAll( 'nav ul li a' ) )
+
+    items.map(
+      item => item.onclick = e => {
+        hightlightActive( item )
+        scrollSmoothly( item.id )
+        if ( item.id === '#education' ) {
+          setTimeout( () => document.querySelector( "#education .line" ).style.setProperty( '--my-animation', 'grow' ), 200 )
+        }
+        if ( item.id === '#experience' ) {
+          setTimeout( () => document.querySelector( "#experience .line" ).style.setProperty( '--my-animation', 'grow' ), 200 )
+        }
+        if ( item.id === '#skills' ) {
+          Array.from( document.querySelectorAll( '#skills ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
+        }
+        if ( item.id === '#languages' ) {
+          Array.from( document.querySelectorAll( '#languages ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
+        }
+        if ( item.id === '#other' ) {
+          Array.from( document.querySelectorAll( '#other ul li div div' ) )
+            .map( item =>
+              setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+            )
+        }
+      }
+    )
+
+    const hash = window.location.hash
+
+    if ( hash ) {
+      const found = items.find
+        (
+        item => `#${ item.textContent.match( /\w+/ )[ 0 ].toLowerCase() }` === hash
+        )
+      hightlightActive( found )
+    } else {
+      history.pushState( null, null, `#welcome` )
+      window.scroll( 0, 1 )
+    }
+
+    const scrollSmoothly = selector => {
+
+      document.querySelector( selector ).scrollIntoView( {
+        behavior: 'smooth',
+        block: 'start'
+      } )
+
+      history.replaceState( null, null, document.location.pathname + selector )
+
+    }
+
+    Array.from( document.querySelectorAll( '.copyInput' ) )
+      .map( copyInput => {
+        copyInput.setAttribute( 'data-before', 'Click to copy' )
+        copyInput.onclick = e => {
+          copyInput.setAttribute( 'data-before', 'Copied' )
+          copyInput.firstElementChild.select()
+          document.execCommand( "copy" );
+          setTimeout( () => {
+            copyInput.setAttribute( 'data-before', 'Click to copy' )
+          }, 2000 );
+        }
+      } );
+
+    send.onclick = e => {
+      const subject = 'Job Application'
+      const encodedSubject = encodeURIComponent( subject )
+      const body = "Hi Mateja, I've read your CV and"
+      const encodedBody = encodeURIComponent( body )
+      e.target.href = `mailto:mateja176@gmail.com?subject=${ encodedSubject }&body=${ encodedBody }`
+    }
+
+    const sections = Array.from( document.querySelectorAll( "main > section" ) )
+      .map
+      (
+      section => ( { id: section.id, start: section.offsetTop, end: section.offsetTop + section.offsetHeight } )
+      )
+
+    window.onscroll = ( () => {
+
+      const routerState = {
+
+        _active: 'welcome',
+
+        get active() {
+          return this._active
+        },
+
+        set active( value ) {
+          if ( value !== this.active ) {
+            this._active = value
+            history.pushState( null, null, `#${ this.active }` )
+            if ( value === 'education' ) {
+              setTimeout( () => document.querySelector( "#education .line" ).style.setProperty( '--my-animation', 'grow' ), 200 )
+            }
+            if ( value === 'experience' ) {
+              setTimeout( () => document.querySelector( "#experience .line" ).style.setProperty( '--my-animation', 'grow' ), 200 )
+            }
+            if ( value === 'skills' ) {
+              Array.from( document.querySelectorAll( '#skills ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
+            if ( value === 'languages' ) {
+              Array.from( document.querySelectorAll( '#languages ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
+            if ( value === 'other' ) {
+              Array.from( document.querySelectorAll( '#other ul li div div' ) )
+                .map( item =>
+                  setTimeout( () => item.style.setProperty( '--my-animation', 'expand' ), 200 )
+                )
+            }
+          }
+        }
+
+      }
+
+      return () => {
+
+        const offset = document.documentElement.scrollTop
+
+        if (routerState.active) {
+          document.getElementById( `#${ routerState.active }` ).classList.remove( 'active' )
+        }
+
+        const found = sections.find
+          (
+          ( section, i ) => offset >= section.start && offset < section.end
+          )
+
+        if ( found ) {
+          routerState.active = found[ 'id' ]
+          document.getElementById( `#${ routerState.active }` ).classList.add( 'active' )
+        }
+
+      }
+
+    } )()
+
+    hamburger.onclick = () => {
+      navigation.classList.toggle( 'visible' )
+    }
+
+  </script>
+
+</body>
+
+</html>
